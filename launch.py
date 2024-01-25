@@ -58,10 +58,19 @@ def main():
             subprocess.run([sys.executable, file_path])
 
     ngrok_token = os.environ.get("NGROK")
-    if (ngrok_token):
+    if ngrok_token:
         ngrok.kill()
         srv = ngrok.connect(7860, pyngrok_config=conf.PyngrokConfig(auth_token=ngrok_token) , bind_tls=True).public_url
-        print(srv[8:])
+        print(f"\n\nhttps://{srv[8:]}\n\n")
+
+    config_dir = os.environ.get("CONFIG")
+        if config_dir:
+            config_files = ["styles.csv" ,"ui-config.json" ,"config.json" ,"cache.json"]
+            for cfile in config_files:
+                cfile_path = os.path.join(config_dir, cfile)
+                if os.path.exists(cfile_path):
+                    subprocess.run(["ln", "-s", cfile_path])
+
 
     start()
 
