@@ -68,8 +68,11 @@ def main():
             config_files = ["styles.csv" ,"ui-config.json" ,"config.json" ,"cache.json"]
             for cfile in config_files:
                 cfile_path = os.path.join(config_dir, cfile)
+                if os.path.exists(cfile):
+                    os.remove(cfile)
+
                 if os.path.exists(cfile_path):
-                    subprocess.run(["ln", "-s", cfile_path])
+                    subprocess.run(["ln", cfile_path, cfile])
 
 
     start()
