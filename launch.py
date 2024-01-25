@@ -1,5 +1,6 @@
 import os
 import subprocess
+import shutil
 import sys
 from pyngrok import ngrok, conf
 
@@ -72,7 +73,7 @@ def main():
                 os.remove(cfile)
 
             if os.path.exists(cfile_path):
-                subprocess.run(["ln", cfile_path, cfile])
+                shutil.copy(cfile_path, cfile)
 
 
     start()
