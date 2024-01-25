@@ -64,15 +64,15 @@ def main():
         print(f"\n\nhttps://{srv[8:]}\n\n")
 
     config_dir = os.environ.get("CONFIG")
-        if config_dir:
-            config_files = ["styles.csv" ,"ui-config.json" ,"config.json" ,"cache.json"]
-            for cfile in config_files:
-                cfile_path = os.path.join(config_dir, cfile)
-                if os.path.exists(cfile):
-                    os.remove(cfile)
+    if config_dir:
+        config_files = ["styles.csv" ,"ui-config.json" ,"config.json" ,"cache.json"]
+        for cfile in config_files:
+            cfile_path = os.path.join(config_dir, cfile)
+            if os.path.exists(cfile):
+                os.remove(cfile)
 
-                if os.path.exists(cfile_path):
-                    subprocess.run(["ln", cfile_path, cfile])
+            if os.path.exists(cfile_path):
+                subprocess.run(["ln", cfile_path, cfile])
 
 
     start()
