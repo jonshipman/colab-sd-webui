@@ -233,6 +233,8 @@ prepare_tcmalloc() {
     fi
 }
 
+pip install -r requirements_versions.txt
+
 KEEP_GOING=1
 export SD_WEBUI_RESTART=tmp/restart
 while [[ "$KEEP_GOING" -eq "1" ]]; do
