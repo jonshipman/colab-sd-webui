@@ -247,6 +247,12 @@ then
     ln -s "${EXTENSIONS}" ./extensions
 fi
 
+if [[ -z "${EMBEDDINGS}" ]]
+then
+    rm -rf ./embeddings
+    ln -s "${EMBEDDINGS}" ./embeddings
+fi
+
 KEEP_GOING=1
 export SD_WEBUI_RESTART=tmp/restart
 while [[ "$KEEP_GOING" -eq "1" ]]; do
