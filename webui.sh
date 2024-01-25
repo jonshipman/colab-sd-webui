@@ -235,24 +235,6 @@ prepare_tcmalloc() {
 
 pip install -r requirements_versions.txt
 
-if [[ -z "${MODELS}" ]]
-then
-    rm -rf ./models
-    ln -s "${MODELS}" ./models
-fi
-
-if [[ -z "${EXTENSIONS}" ]]
-then
-    rm -rf ./extensions
-    ln -s "${EXTENSIONS}" ./extensions
-fi
-
-if [[ -z "${EMBEDDINGS}" ]]
-then
-    rm -rf ./embeddings
-    ln -s "${EMBEDDINGS}" ./embeddings
-fi
-
 KEEP_GOING=1
 export SD_WEBUI_RESTART=tmp/restart
 while [[ "$KEEP_GOING" -eq "1" ]]; do

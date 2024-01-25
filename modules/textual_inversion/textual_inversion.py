@@ -411,7 +411,7 @@ def train_embedding(id_task, embedding_name, learn_rate, batch_size, gradient_st
     unload = shared.opts.unload_models_when_training
 
     if save_embedding_every > 0:
-        embedding_dir = os.path.join(log_directory, "embeddings")
+        embedding_dir = os.environ.get("EMBEDDINGS", os.path.join(log_directory, "embeddings"))
         os.makedirs(embedding_dir, exist_ok=True)
     else:
         embedding_dir = None
