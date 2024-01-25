@@ -1,6 +1,7 @@
 import os
 import subprocess
 import sys
+from pyngrok import ngrok, conf
 
 from modules import launch_utils
 
@@ -55,6 +56,12 @@ def main():
             file_path = os.path.join(prestart_dir, python_file)
             print(f"Executing: {file_path}")
             subprocess.run([sys.executable, file_path])
+
+    ngrok_token = os.environ.get("NGROK")
+    if (ngrok_token)
+        ngrok.kill()
+        srv = ngrok.connect(7860, pyngrok_config=conf.PyngrokConfig(auth_token=ngrok_token) , bind_tls=True).public_url
+        print(srv[8:])
 
     start()
 
