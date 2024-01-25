@@ -1,3 +1,7 @@
+import os
+import subprocess
+import sys
+
 from modules import launch_utils
 
 args = launch_utils.args
@@ -40,6 +44,17 @@ def main():
 
     if args.test_server:
         configure_for_tests()
+
+    prestart_dir = os.environ.get("PRESTART_DIR", "prestart")
+    if not os.path.exists(prestart_dir):
+        os.makedirs(prestart_dir)
+
+    python_files = [file for file in os.listdir(prestart_dir) if file.endswith(".py")]
+    if python_files:
+        for python_file in python_files:
+            file_path = os.path.join(prestart_dir, python_file)
+            print(f"Executing: {file_path}")
+            subprocess.run([sys.executable, file_path])
 
     start()
 

@@ -130,7 +130,7 @@ case "$gpu_info" in
         if [[ -z "${TORCH_COMMAND}" ]]
         then
             pyv="$(${python_cmd} -c 'import sys; print(".".join(map(str, sys.version_info[0:2])))')"
-            if [[ $(bc <<< "$pyv <= 3.10") -eq 1 ]] 
+            if [[ $(bc <<< "$pyv <= 3.10") -eq 1 ]]
             then
                 # Navi users will still use torch 1.13 because 2.0 does not seem to work.
                 export TORCH_COMMAND="pip install torch==1.13.1+rocm5.2 torchvision==0.14.1+rocm5.2 --index-url https://download.pytorch.org/whl/rocm5.2"
@@ -189,7 +189,7 @@ else
     printf "\n%s\n" "${delimiter}"
     printf "Clone stable-diffusion-webui"
     printf "\n%s\n" "${delimiter}"
-    "${GIT}" clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git "${clone_dir}"
+    "${GIT}" clone https://github.com/jonshipman/colab-sd-webui.git "${clone_dir}"
     cd "${clone_dir}"/ || { printf "\e[1m\e[31mERROR: Can't cd to %s/%s/, aborting...\e[0m" "${install_dir}" "${clone_dir}"; exit 1; }
 fi
 
