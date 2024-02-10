@@ -66,7 +66,7 @@ def main():
 
     config_dir = os.environ.get("CONFIG")
     if config_dir:
-        config_files = ["styles.csv" ,"ui-config.json" ,"config.json" ,"cache.json"]
+        config_files = ["config.json" ,"cache.json"]
         for cfile in config_files:
             cfile_path = os.path.join(config_dir, cfile)
             if os.path.exists(cfile):
