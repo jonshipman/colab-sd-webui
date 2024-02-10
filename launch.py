@@ -75,6 +75,13 @@ def main():
             if os.path.exists(cfile_path):
                 shutil.copy(cfile_path, cfile)
 
+        clip14path = os.path.join(config_dir, "clip-vit-large-patch14.zip")
+        if os.path.exists(clip14path):
+            extract_dir = os.path.join("openai","clip-vit-large-patch14")
+            if not os.path.exists(extract_dir):
+                os.makedirs(extract_dir)
+            shutil.unpack_archive(clip14path, extract_dir)
+
 
     start()
 
