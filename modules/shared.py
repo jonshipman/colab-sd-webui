@@ -1,5 +1,5 @@
 import sys
-import os
+
 import gradio as gr
 
 from modules import shared_cmd_options, shared_gradio_themes, options, shared_items, sd_models_types
@@ -11,18 +11,8 @@ parser = shared_cmd_options.parser
 
 batch_cond_uncond = True  # old field, unused now in favor of shared.opts.batch_cond_uncond
 parallel_processing_allowed = True
-
 styles_filename = cmd_opts.styles_file
 config_filename = cmd_opts.ui_settings_file
-
-# Add environ CONFIG path
-config_dir = os.environ.get("CONFIG")
-if config_dir and os.path.exists(os.path.join(config_dir,"styles.csv")):
-    styles_filename = os.path.join(config_dir,"styles.csv")
-
-if config_dir and os.path.exists(os.path.join(config_dir,"ui-config.json")):
-    config_filename = os.path.join(config_dir,"ui-config.json")
-
 hide_dirs = {"visible": not cmd_opts.hide_ui_dir_config}
 
 demo = None
